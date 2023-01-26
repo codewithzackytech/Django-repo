@@ -1,0 +1,593 @@
+
+<div >
+
+  
+ <div class="container">
+       
+        <nav class="header__menu">
+          <!-- Not Logged In -->
+          <!-- <a href="/login.html">
+            <img src="./assets/avatar.svg" />
+            <p>Login</p>
+          </a> -->
+
+          <!-- Logged In -->
+
+        
+        </nav>
+      </div>
+    </header>
+    <main class="layout layout--3">
+      <div class="container"  style="margin-left: 1.5rem;"> 
+        <!-- Topics Start -->
+        <div class="topics" >  
+        
+          
+          
+          
+    {% if request.user.is_authenticated %}
+                      
+    <div class="roomListRoom" style="background-color:  rgb(253, 253, 253);margin-bottom: 1rem;border-radius: 0rem;width: 110%;margin-left: 0rem;box-shadow: 0px 0px 10px rgb(196, 194, 194);">
+
+
+      
+          
+      {% if request.user.is_authenticated %}
+
+
+
+
+       <div class="avatar avatar--larg" style="width: 100%;border-radius: 0.1rem;border-color: rgb(253, 253, 253);">
+                  <img src="{{request.user.avator.url}}" />
+                </div>
+
+
+
+        <div class="roomListRoom__header">
+          
+          
+          
+          
+          <a href="{% url 'user-profile' request.user.id %}" class="roomListRoom__author">
+                
+                
+                <div class="avatar avatar--smal" style="margin-bottom: 40px;position: absolute;width: 6%;margin-left: 1rem;">
+                  <img src="{{request.user.avator.url}}" />
+                </div>
+                
+                
+            </a>
+
+            
+         
+            
+            </div>
+            {% endif %}
+
+              <div style="width: 100%;">
+
+            {% if request.user.is_authenticated %}
+                   <p style="margin-top: 2rem;color: #000;font-size: 2.30rem;font-family: Arial, Helvetica, sans-serif;margin-bottom: 0px;font-weight: bold;">{{request.user.first_name}} {{request.user.last_name}}</p>
+                <p style="margin-top: 0rem;color: rgb(121, 120, 120);font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">@{{request.user.username}}</p>
+                
+                {% endif %}
+
+
+
+                  <div style="flex-direction: row;display: flex;justify-content: space-evenly;align-items: center;">
+                   
+   
+
+              
+
+<div style="justify-content: center;align-items: center;display: flex;flex-direction: column;">
+  <p style="font-weight: bold;color: rgb(102, 101, 101);">Connected</p>
+  <p style="font-size: large;color:dodgerblue;font-weight: bold;">{{request.user.followersPeople}}<span><i class="user icon" style="font-size: 16px;color:dodgerblue;"></i></span></p>
+</div>
+
+
+
+
+
+<div style="justify-content: center;align-items: center;display: flex;flex-direction: column;">
+  <p style="font-weight: bold;color: rgb(102, 101, 101);">Posted</p>
+  <p style="font-size: large;color:dodgerblue;font-weight: bold;">{{room_count}}P</p>
+</div>
+
+                  </div>
+           
+
+
+
+                  
+                </div>
+                
+              </div>
+
+    {% endif %}
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+
+
+
+
+
+              <!--starting topic-->
+           
+          
+              
+    <div class="roomListRoom" style="background-color:  white;margin-bottom: 5rem;border-radius: 0rem;width: 110%;margin-left: 0rem;box-shadow: 0px 0px 10px rgb(196, 194, 194);">
+
+
+      
+         {% if request.user.is_authenticated %}
+     
+ <h1 style="font-weight: bold;color: #000;font-size: medium;">Topics for you: <a href="/" style="font-weight: 100;color:dodgerblue;" class="active">All</a></h1>
+         {% else %}
+
+          <h1 style="font-weight: bold;color: #000;font-size: medium;">Public Topics: <a href="/" style="font-weight: 100;color:dodgerblue;" class="active">All</a></h1>
+
+         {% endif %}
+              <div style="width: 100%;">
+
+             
+                
+               
+
+                
+                {% for topics in topic %}
+   
+              
+              <a  href="{% url 'home' %}?q={{topics.name}}" style="color:dodgerblue;padding-left: 0px;margin-bottom: 0px;font-weight: 500;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" class="topicHover">{{topics.name}}</a>
+              <br>
+                  <p style="color: rgb(80, 79, 79);margin-top: 0px;">{{topics.room_set.all.count}} Posts</p>
+          
+       
+       
+
+          {% endfor %}
+
+
+                  <div style="flex-direction: row;display: flex;justify-content: space-evenly;align-items: center;">
+                   
+   
+
+              
+
+
+                  </div>
+           
+
+
+
+                  
+                </div>
+                
+              </div>
+           
+
+              <!--end topic loop-->
+        
+        </div>
+
+  
+
+
+        
+
+        
+        <!-- Topics End -->
+
+        <!-- Room List Start -->
+        <div class="roomList">
+          <div class="mobile-menu">
+          
+
+               <form class="header__search" style="background-color: aliceblue;margin-bottom: 20px;" >
+              <label style="background-color: rgb(255, 255, 255);box-shadow: 0px 0px 10px whitesmoke;">
+
+                     {% if request.user.is_authenticated %}
+                <a href="{% url 'user-profile' request.user.id %}">
+
+                  <div class="avatar avatar--small">
+               <img src="{{request.user.avator.url}}" />
+             </div>
+                </a>
+                    {% endif %}
+
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" >
+                  <title>search</title>
+                  <path
+                  
+                    d="M32 30.586l-10.845-10.845c1.771-2.092 2.845-4.791 2.845-7.741 0-6.617-5.383-12-12-12s-12 5.383-12 12c0 6.617 5.383 12 12 12 2.949 0 5.649-1.074 7.741-2.845l10.845 10.845 1.414-1.414zM12 22c-5.514 0-10-4.486-10-10s4.486-10 10-10c5.514 0 10 4.486 10 10s-4.486 10-10 10z"
+                  ></path>
+                </svg>
+                <input placeholder="Search Room or Topic" name="q" style="color: dodgerblue;"/>
+              
+
+
+                     {% if request.user.is_authenticated %}
+             
+                  <button style="background-color: white;border: solid 1px white;color: dodgerblue;"> <a href="{% url 'create-room' %}" style="margin-left: 17%;margin-right: 0.90rem;">Post</a></button>
+
+                  {% endif %}
+           
+              </label>
+
+              
+            </form>
+
+
+
+            <div class="mobile-menuItems">
+              <a class="btn btn--main btn--pill" href="{% url 'topics' %}" style="border: solid 1px dodgerblue;color: dodgerblue;box-shadow: 0px 0px 10px rgb(234, 241, 248)">People to connect</a>
+              <a class="btn btn--main btn--pill" href="{% url 'activity' %}" style="border: solid 1px dodgerblue;color: dodgerblue;box-shadow: 0px 0px 10px rgb(234, 241, 248);">Topics for you</a>
+            </div>
+          </div>
+
+
+           <form class="header__search" style="background-color: aliceblue;margin-bottom: 20px;" >
+              <label style="background-color: rgb(255, 255, 255);box-shadow: 0px 0px 10px whitesmoke;">
+               
+                {% if request.user.is_authenticated %}
+                <div class="avatar avatar--small">
+                  <img src="{{request.user.avator.url}}" />
+                </div>
+                {% endif %}
+
+
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" >
+                  <title>search</title>
+                  <path
+                  
+                    d="M32 30.586l-10.845-10.845c1.771-2.092 2.845-4.791 2.845-7.741 0-6.617-5.383-12-12-12s-12 5.383-12 12c0 6.617 5.383 12 12 12 2.949 0 5.649-1.074 7.741-2.845l10.845 10.845 1.414-1.414zM12 22c-5.514 0-10-4.486-10-10s4.486-10 10-10c5.514 0 10 4.486 10 10s-4.486 10-10 10z"
+                  ></path>
+                </svg>
+                <input placeholder="Search Room or Topic " name="q" style="color: dodgerblue;" />
+              
+
+              
+                     {% if request.user.is_authenticated %}
+                  <button style="background-color: white;border: solid 1px white;color: dodgerblue;margin-left: 30%;"><a href="{% url 'create-room' %}" style="">Post</a></button>
+
+                  {% endif %}
+              
+              </label>
+
+              
+            </form>
+
+
+
+
+            
+          
+
+
+
+
+          
+        
+
+            
+       
+
+
+
+
+          <div>
+
+
+
+
+            
+
+
+
+          
+          </div>
+
+
+
+
+          <!--profile temp-->
+
+
+
+    
+           
+
+              
+              <div style="background-color: rgb(246, 247, 248);padding: 0rem;">
+            
+          <!--end pro temp-->
+
+
+
+
+
+<!--data st-->
+
+{% for datas in data %}
+
+          <div class="roomListRoom" style="background-color:  rgb(255, 255, 255);border: solid 0px rgb(248, 249, 252);;;box-shadow: 0px 0px 5px whitesmoke;">
+            <div class="roomListRoom__header">
+              <a href="{% url 'user-profile' datas.host.id %}" class="roomListRoom__author">
+                <div class="avatar avatar--small">
+                  <img src="{{datas.host.avator.url}}" />
+                </div>
+                
+                <span style="font-size: large;margin-top: 0px;padding-top: 0px;color: #000;font-family: Arial, Helvetica, sans-serif;">{{datas.host.first_name}} {{datas.host.last_name}}</span> 
+                <span style="color: rgb(116, 116, 116);margin-left: 0.60rem;font-size: small;">{{datas.created|timesince}}</span> </span>
+              </a>
+         
+              
+              
+         {% if request.user == datas.host %}
+
+          <a href="{% url 'update-room' datas.id %}">
+            <svg
+                  enable-background="new 0 0 24 24"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  width="15"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>edit</title>
+                  <g>
+                    <path d="m23.5 22h-15c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h15c.276 0 .5.224.5.5s-.224.5-.5.5z" />
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m2.5 22c-.131 0-.259-.052-.354-.146-.123-.123-.173-.3-.133-.468l1.09-4.625c.021-.09.067-.173.133-.239l14.143-14.143c.565-.566 1.554-.566 2.121 0l2.121 2.121c.283.283.439.66.439 1.061s-.156.778-.439 1.061l-14.142 14.141c-.065.066-.148.112-.239.133l-4.625 1.09c-.038.01-.077.014-.115.014zm1.544-4.873-.872 3.7 3.7-.872 14.042-14.041c.095-.095.146-.22.146-.354 0-.133-.052-.259-.146-.354l-2.121-2.121c-.19-.189-.518-.189-.707 0zm3.081 3.283h.01z"
+                      />
+                    </g>
+                    <g>
+                      <path
+                        d="m17.889 10.146c-.128 0-.256-.049-.354-.146l-3.535-3.536c-.195-.195-.195-.512 0-.707s.512-.195.707 0l3.536 3.536c.195.195.195.512 0 .707-.098.098-.226.146-.354.146z"
+                      />
+                    </g>
+                  </g>
+                </svg>
+          </a>
+
+          {% endif %}
+
+
+      
+
+
+
+            </div>
+            <div class="roomListRoom__content">
+              
+              
+               <p style="color: black;">
+                  {{datas.description}}
+              </p>
+             
+           
+             <img src="{{datas.Image_If_Needed.url}}" style="width: 100%;max-height: 100rem;"/>
+        
+
+          
+
+          
+             
+            </div>
+            <div class="roomListRoom__meta" style="border: solid 1px white;">
+              <a href="{% url 'room' datas.id %}" class="roomListRoom__joined" style="margin-left: 10px;">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                  <title>user-group</title>
+                  <path
+                    d="M30.539 20.766c-2.69-1.547-5.75-2.427-8.92-2.662 0.649 0.291 1.303 0.575 1.918 0.928 0.715 0.412 1.288 1.005 1.71 1.694 1.507 0.419 2.956 1.003 4.298 1.774 0.281 0.162 0.456 0.487 0.456 0.85v4.65h-4v2h5c0.553 0 1-0.447 1-1v-5.65c0-1.077-0.56-2.067-1.461-2.584z"
+                  ></path>
+                  <path
+                    d="M22.539 20.766c-6.295-3.619-14.783-3.619-21.078 0-0.901 0.519-1.461 1.508-1.461 2.584v5.65c0 0.553 0.447 1 1 1h22c0.553 0 1-0.447 1-1v-5.651c0-1.075-0.56-2.064-1.461-2.583zM22 28h-20v-4.65c0-0.362 0.175-0.688 0.457-0.85 5.691-3.271 13.394-3.271 19.086 0 0.282 0.162 0.457 0.487 0.457 0.849v4.651z"
+                  ></path>
+                  <path
+                    d="M19.502 4.047c0.166-0.017 0.33-0.047 0.498-0.047 2.757 0 5 2.243 5 5s-2.243 5-5 5c-0.168 0-0.332-0.030-0.498-0.047-0.424 0.641-0.944 1.204-1.513 1.716 0.651 0.201 1.323 0.331 2.011 0.331 3.859 0 7-3.141 7-7s-3.141-7-7-7c-0.688 0-1.36 0.131-2.011 0.331 0.57 0.512 1.089 1.075 1.513 1.716z"
+                  ></path>
+                  <path
+                    d="M12 16c3.859 0 7-3.141 7-7s-3.141-7-7-7c-3.859 0-7 3.141-7 7s3.141 7 7 7zM12 4c2.757 0 5 2.243 5 5s-2.243 5-5 5-5-2.243-5-5c0-2.757 2.243-5 5-5z"
+                  ></path>
+                </svg>
+                 <p style="margin-left: 8px;">{{datas.participants.all.count}} participated</p>
+              </a>
+              <p class="roomListRoom__topic" style="background-color:rgb(255, 255, 255);color: dodgerblue;">Topic: {{datas.topic.name}}</p>
+
+
+              
+
+
+            </div>
+            
+
+
+            <div style="flex-direction: row;display: flex;flex-wrap: wrap;justify-content: space-between;align-items: center;margin-top: 0.5rem;">
+              
+
+            
+           
+
+
+
+                   <a style="width: 100%;margin-left: 1px;border: solid 1px rgb(193, 222, 233);background-color: none;;height: 3.5rem;border-radius: 20rem;font-family: Arial, Helvetica, sans-serif;color: rgb(37, 36, 36);justify-content: center;display: flex;flex-direction: row;" href="{% url 'room' datas.id %}">
+                
+              <div style="justify-content: center;align-items: center;display: flex;">
+                 <p style="font-family: Arial, Helvetica, sans-serif;font-weight: 100;color:dodgerblue;">Comment</p>
+
+              </div>
+              </a>
+
+            </div>
+
+
+
+          </div>
+
+{% endfor %}
+</div>
+<!--data end-->
+
+
+
+
+
+
+        </div>
+        <!-- Room List End -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- Activities Start -->
+        <div class="activities" style="background-color:rgb(255, 255, 255);box-shadow: 0px 0px 10px rgb(196, 194, 194);;width: 10rem;">
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+          <div class="activities__header" style="margin: 0px;;">
+          </div>
+       
+
+          {% if request.user.is_authenticated %}
+   <h2 style="background-color: rgb(255, 255, 255);color: #000;border-radius: 0.59rem;justify-content: center;align-items: center;display: flex;margin-right: 44%;margin-bottom: 0px;">People to follow</h2>
+
+   
+        
+
+          {% else %}
+
+          
+   <h2 style="background-color: rgb(255, 255, 255);color: #000;border-radius: 0.59rem;justify-content: center;align-items: center;display: flex;margin-right: 45%;margin-bottom: 0px;">People to follow</h2> 
+   
+          {% endif %}
+
+            <p style="background-color: rgb(255, 255, 255);color: dodgerblue;border-radius: 0.59rem;margin-top: 0.99rem;margin-left: 2rem;width: 100%;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"><span></span> Find people you know</p>
+        
+
+                <form action="" method="POST">
+          {% csrf_token %}
+            {% for public_Users in public_User %}
+    
+
+            <div style="margin-left: 2rem;padding: 1rem;margin-bottom: 0.20rem;margin-bottom: 0.10rem;"  class="roomListRoom__author">
+          
+             <a href="{% url 'user-profile' public_Users.id %}" style="">
+                  <div class="avatar avatar--smallFollow">
+                  <img src="{{public_Users.avator.url}}" />
+                </div>
+                
+             </a>
+              <div style="width: 100%;flex-direction: column;">
+                  <span style="font-size: small;margin-top: 0px;padding-top: 0px;color: #000;font-family: Arial, Helvetica, sans-serif;font-weight: 100;">{{public_Users.name}} <span style="color: rgb(158, 158, 158);">@{{public_Users.bio}}</span></span> 
+                  <br>
+
+       
+
+        <input name="userE" type="hidden" value="yesyes"  />
+
+                <button style="border-radius: 2rem;width: 50%;height: 3rem;border: solid 1px dodgerblue;background-color: rgb(255, 255, 255);color:dodgerblue;font-weight: bold;margin-top: 0.50rem;" type="button" ><a href="{% url 'following' %}" class="follow">Connect</a></button>
+             
+
+
+
+              
+              </div>
+            </div>
+            
+               <hr style="border: solid 1px rgb(250, 247, 247);margin-left: 3rem;margin-right: 3rem;">
+
+
+{% endfor %}
+ </form>
+
+   <p style="background-color: rgb(255, 255, 255);color: dodgerblue;border-radius: 0.59rem;margin-top: 0.99rem;margin-left: 2rem;width: 100%;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;margin-bottom: 2rem;"><span</span>People filtered.</p>
+        
+
+          
+
+
+            
+
+             
+
+          
+              
+        </div>
+
+
+        
+        <!-- Activities End -->
+      </div>
+    </main>
+
+
+
+
+
+
+
+
+
+<!--endright-->
+    </div>
+
+
+    <script>
+      function basic() {
+          const joinLabel = document.getElementById("join");
+          joinLabel.innerHTML="Joined"
+      }
+      basic()
+    </script>

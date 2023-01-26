@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-7">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body style="background: #000000;">
+    
+
+  {% if page == 'login' %}
+    <div  style="">
+
+            <div style="">
+
+    <form method="post" action="" style="">
+      
+     {% csrf_token %}
+    
+   
+     
+     <div style="display: flex;justify-content: space-between;align-items: center;border: solid 1px none;height: 20rem;">
+      
+      <div>
+        
+      </div>
+      
+      <div style="
+      background-color: none;
+      align-items: center;
+      margin-top: 4rem;
+      justify-content: center;
+  
+      display: flex;
+      flex-direction: column;
+      min-width: 80%;
+      max-width: 10px;
+    
+  position: absolute;
+  top: 50%;
+  left: 45%;
+
+  background-color: none;
+  padding: 5%;
+
+  transform: translate(-40%, -55%);
+    ">
+    
+    
+       <div style="flex-direction: row;display: flex;align-items: center;justify-content: space-between;flex-wrap: wrap;">
+
+        <div style="justify-content: center;align-items: center;display: flex;">
+
+           <img src="{% static 'SystemImage/users.png' %}" style="width: 70%;height: 140%;"/> 
+    
+
+        </div>
+
+
+
+        <div style="align-items: center;display: flex;flex-direction: column;justify-content: center;flex-wrap: wrap;">
+ 
+
+
+
+
+          
+
+              <div style="justify-content:center;align-items: center;display: flex;margin-top: 10%;flex-direction: column;">
+        <p style="color: dodgerblue;font-size: 100%;font-family: Arial, Helvetica, sans-serif;">Login in to your acount</p>
+
+          <img src="{% static 'SystemImage/1d.png' %}" style="width:150px; height:45px"/>
+
+        
+        </div>
+
+
+      
+
+
+
+        <div style="justify-content: flex-start;align-items: center;display: flex;flex-wrap: wrap;">
+            <div style="justify-content: flex-start;align-items: flex-start;display: flex;">
+        <p style="color: rgb(0, 0, 0);font-size: 80%;">Email address</p>
+        
+        </div>
+ <input type="email"  name="username" placeholder="Email address" style="
+   width: 100%; height: 40px;border-radius: 5px;padding-left: 20px;border: solid 1px grey;border-radius:5px;background-color: #000;color: white;"/>
+
+   
+          </div>
+                                                
+
+
+               <div style="justify-content: flex-start;align-items: center;display: flex;flex-wrap: wrap;">
+            <div style="justify-content: flex-start;align-items: flex-start;display: flex;">
+        <p style="color: rgb(0, 0, 0);font-size: 80%;">Your password</p>
+        
+        </div>
+ <input type="password"  name="password"  placeholder="Password" style="
+   width: 100%;height: 40px;border-radius: 5px;padding-left: 20px;border: solid 1px grey;border-radius: 5px;background-color: #000;color: white;"/>
+                                       
+          </div>
+
+
+
+
+          
+               <div style="justify-content: center;align-items: center;display: flex;flex-wrap: wrap;width: 50%;">
+      
+
+                  
+          <div style="justify-content: center;align-items: center;display: flex;">
+                    {% for message in messages %}
+                    <p style="color: rgb(255, 0, 0);"> {{message}}</p>
+                    {% endfor %}  
+                  </div>
+                                            <button type="submit" style="width: 30%;height: 50px;
+                                            margin-top: 30px;
+                                  
+                                            min-width: 250px;
+                                            font-size: 100%;
+                                            background: dodgerblue;border-radius: 50rem;color: rgb(255, 255, 255);font-size: 20px;box-shadow: 0px 0px 0px rgb(173, 150, 228);border: solid 0px grey;;">Login</button>
+          </div>
+                                
+          
+<div style="justify-content: center;align-items: center;display: flex;flex-direction: column">
+
+<p><a href="{% url 'register' %}" style="color: rgb(61, 21, 241);text-decoration: none;font-weight: 100 ;">Don't have an acount</a></p>     
+
+</div>
+           
+
+        </div>
+
+
+       </div>
+          </div>
+    
+
+
+       </div>
+        </form>
+    </div>
+
+
+
+
+
+</div>
+{% else %}
+
+
+    
+
+    
+ 
+
+
+      {% if form.errors %}
+
+        <div style="background-color:red;justify-content: center;align-items: center;display: flex;color: white;border-radius: 0px;margin-top: 20px;">
+            <p style="color: white;">{{form.errors}}</p>
+        </div>
+
+        {% endif %}
+
+
+
+           
+                  <div style="background-color:red;justify-content: center;align-items: center;display: flex;margin-top: 20px;">
+                    {% for message in messages %}
+                    <p style="color: white;"> {{message}}</p>
+                    {% endfor %}  
+                  </div>
+
+
+
+    <div style="flex-direction: row;display: flex;justify-content: space-around;align-items: center;flex-wrap: wrap;">
+       
+
+
+
+
+       <div style="justify-content: center;align-items: center;display: flex;flex-direction: column;">
+
+        
+           <img src="{% static 'SystemImage/users.png' %}" style="width: 70%;height: 140%;"/> 
+    
+  <p style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;color: rgb(44, 43, 46);font-weight: 100;color:dodgerblue;">Sign Up New Acount</p>
+  <img src="{% static 'SystemImage/1d.png' %}" style="width:150px; height:45px"/>
+
+
+        </div>
+
+
+                  <div style="justify-content: center;align-items: center;display: flex;margin-top: 0px;">
+                            <div style="border:solid 1px none;width:450px;height: 680px;box-shadow: 0px 0px 20px  none;background-color: none;box-shadow: 10px 10px 0px none;border-radius: 20px;">
+                                <div style="justify-content: center;align-items: center; display: flex;flex-direction: column;flex-wrap: wrap">
+                                  
+                                    
+        <div style="justify-content: space-around;align-items: center;display: flex;flex-direction: column;margin-top: 15%;">
+                <form method="POST" action="">
+                {% csrf_token %}
+                <p style="font-family:sans-serif;font-size: medium;color: grey;">Your Detail</p>
+                  
+                {{form.first_name}}<br>
+                {{form.last_name}}<br>
+                {{form.username}}<br>
+                {{form.email}}<br>
+                <p style="font-family:sans-serif;font-size: medium;color: grey;">Password</p>
+               
+                {{form.password1}}<br>
+                {{form.password2}}<br>
+             
+
+             
+                <input type="hidden" id="fieldType" value="" name="fieldType"/>
+                     <input type="hidden" id="dash" value="" name="dash"/>
+                
+                
+          
+             <br>
+                    <div style="justify-content: center;align-items: center;display: flex;flex-direction: column;">
+                  
+                        <button style="width: 270px;height: 50px;border-radius: 5px;background-color: dodgerblue;color: white;border:solid 1px dodgerblue;box-shadow: 0px 0px 0px white;font-size:x-large;border-radius: 20px;" type="submit" onclick="didSubmite();">SignUp</button>
+                </div>
+                
+
+                <div style="justify-content: center;align-items: center;display: flex;flex-direction: column;margin-top: 3px;">
+                
+                         <p><a href="{% url 'login'%}" style="color: blueviolet;text-decoration: none;">Allready SignUp</a></p>     
+
+                    </div>
+
+
+                 
+                
+                </form>
+            </div>
+            
+        </div>
+      
+        </div>
+        
+    </div>
+
+
+        
+    </div>
+
+
+  
+              
+ 
+    <style>
+        input{
+width: 200px;
+height: 25px;
+justify-content: center;
+align-items: center;
+display: flex;
+        }
+    </style>
+
+
+<script>
+    
+// student validation
+
+         const didSubmite = () => {
+
+        input_fields = document.getElementsByTagName('input');
+
+           fullID = input_fields[4].value;
+           id = `${fullID[0]+fullID[1]}`
+           dash = `${fullID[2]}`
+           hiddenInput = input_fields[8].value = `${id}`;
+           hiddenInputDash = input_fields[9].value = `${dash}`;
+           //alert(hiddenInput)
+           //alert(hiddenInputDash)
+           
+        }
+
+        
+</script>
+
+
+    <script>
+
+
+
+        componentDidMount = () => {
+
+            
+            input_fields = document.getElementsByTagName('input');
+    
+            input_fields[1].placeholder="First Name";
+
+
+           
+            for(let i=1; i<=7; i++){
+                 input_fields[i].style.backgroundColor="black"
+                  input_fields[i].style.color="white"
+
+            }
+
+
+            input_fields[1].style.width = '250px';
+            input_fields[1].style.height = '35px';
+             input_fields[1].style.border= 'solid 1px grey';
+            input_fields[1].style.borderRadius = '5px';
+                  input_fields[1].style.paddingLeft = '10px';
+
+                input_fields[2].style.width = '250px';
+            input_fields[2].style.height = '35px';
+             input_fields[2].style.border= 'solid 1px grey';
+             input_fields[2].style.borderRadius = '5px';
+                   input_fields[2].style.paddingLeft = '10px';
+
+                input_fields[3].style.width = '250px';
+                 input_fields[3].style.border= 'solid 1px grey';
+            input_fields[3].style.height = '35px';
+             input_fields[3].style.borderRadius = '5px';
+                   input_fields[3].style.paddingLeft = '10px';
+
+                input_fields[4].style.width = '250px';
+            input_fields[4].style.height = '35px';
+             input_fields[4].style.borderRadius = '5px';
+              input_fields[4].style.border= 'solid 1px grey';
+                   input_fields[4].style.paddingLeft = '10px';
+
+                input_fields[5].style.width = '250px';
+            input_fields[5].style.height = '35px';
+             input_fields[5].style.borderRadius = '5px';
+                   input_fields[5].style.paddingLeft = '10px';
+                    input_fields[5].style.border= 'solid 1px grey';
+
+
+                input_fields[6].style.width = '250px';
+                input_fields[6].style.border= 'solid 1px grey';
+            input_fields[6].style.height = '35px';
+             input_fields[6].style.borderRadius = '5px';
+              input_fields[6].style.paddingLeft = '10px';
+
+
+            input_fields[2].placeholder="Last Name";
+            input_fields[3].placeholder="Your Public Username";
+            input_fields[3].type = 'text'
+            input_fields[4].placeholder="Email";
+            input_fields[5].placeholder="New Password";
+            input_fields[6].placeholder="Confirm Password";
+            input_fields[7].style.width = "50px"
+
+
+        }
+        componentDidMount()
+
+       
+     
+    </script>
+
+{% endif %}
+</body>
+
+</html>

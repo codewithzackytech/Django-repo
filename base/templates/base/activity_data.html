@@ -1,0 +1,95 @@
+
+      <div class="container">
+     
+        <nav class="header__menu">
+          <!-- Not Logged In -->
+          <!-- <a href="/login.html">
+            <img src="./assets/avatar.svg" />
+            <p>Account</p>
+          </a> -->
+
+          <!-- Logged In -->
+       
+        </nav>
+      </div>
+  
+    <main class="layout">
+      <div class="container">
+        <div class="layout__box_mobile_topics_mobile" style="background-color:white" >
+         
+
+
+          
+
+
+
+
+
+
+          
+
+              <!--starting topic-->
+           
+          
+              
+    <div class="roomListRoom" style="background-color:  white;margin-bottom: 5rem;border-radius: 0rem;width: 110%;margin-left: 0rem;box-shadow: 0px 0px 10px rgb(196, 194, 194);">
+
+
+      
+         {% if request.user.is_authenticated %}
+     
+ <h1 style="font-weight: bold;color: #000;font-size: medium;">Topics for you: <a href="/" style="font-weight: 100;color:dodgerblue;" class="active">All</a></h1>
+         {% else %}
+
+          <h1 style="font-weight: bold;color: #000;font-size: medium;">Public Topics: <a href="/" style="font-weight: 100;color:dodgerblue;" class="active">All</a></h1>
+
+         {% endif %}
+              <div style="width: 100%;">
+
+             
+                
+               
+
+                
+                {% for topics in topic %}
+   
+              
+              <a  href="{% url 'home' %}?q={{topics.name}}" style="color:dodgerblue;padding-left: 0px;margin-bottom: 0px;font-weight: 500;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" class="topicHover">{{topics.name}}</a>
+              <br>
+                  <p style="color: rgb(80, 79, 79);margin-top: 0px;">{{topics.room_set.all.count}} Posts</p>
+          
+       
+       
+
+          {% endfor %}
+
+
+                  <div style="flex-direction: row;display: flex;justify-content: space-evenly;align-items: center;">
+                   
+   
+
+              
+
+
+                  </div>
+           
+
+
+
+                  
+                </div>
+                
+              </div>
+           
+
+              <!--end topic loop-->
+        
+
+
+
+         
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>

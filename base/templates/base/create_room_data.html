@@ -1,0 +1,80 @@
+
+    <div class="container">
+     
+      <nav class="header__menu"  style="background-color: wheat;">
+        <!-- Not Logged In -->
+        <!-- <a href="/login.html">
+            <img src="./assets/avatar.svg" />
+            <p>Account</p>
+          </a> -->
+
+        <!-- Logged In -->
+    
+      </nav>
+    </div>
+
+  <main class="create-room layout" >
+    <div class="container" >
+      <div class="layout__box_newPost"  style="background-color: white;" >
+        <div class="layout__boxHeader"  style="background-color:rgb(255, 255, 255);">
+          <div class="layout__boxTitle" >
+            
+            <h3 style="color: rgb(0, 0, 0);;">New  Post</h3>
+          </div>
+        </div>
+        <div class="layout__body" >
+          <form class="form" action="" method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+              <div class="form__group">
+               
+           
+                 
+              <p>Topic Name</p>
+              <input name="topic_name"/>
+
+
+            
+
+  <br><br>
+              
+
+{% for forms in form %}
+{{forms.label}}
+{{forms}}
+{% endfor %}
+              </div>
+
+
+
+
+
+
+            <div class="form__action">
+              <a class="btn btn--dark" href="{% url 'home' %}" style="background-color: rgb(255, 255, 255);color: rgb(0, 0, 0);box-shadow: 0px 0px 0px white;">Cancel</a>
+              <button class="btn btn--main" type="submit" style="background-color: dodgerblue;color: rgb(255, 255, 255);box-shadow: 0px 0px 0px white;">Publish</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+<script>
+
+
+    function inputs(){
+        inputs = document.getElementsByTagName('input')
+        textarea = document.getElementsByTagName('textarea')
+        textarea[0].style.color = "black"
+        
+        inputs[0].style.color="black"
+        
+        inputs[1].style.color="black"
+        inputs[2].style.color="black"
+    }
+
+    inputs()
+</script>
+
+  </main>

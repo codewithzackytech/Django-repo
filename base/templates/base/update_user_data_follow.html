@@ -1,0 +1,77 @@
+
+      <div class="container">
+       
+      
+        <nav class="header__menu">
+          <!-- Not Logged In -->
+          <!-- <a href="/login.html">
+            <img src="./assets/avatar.svg" />
+            <p>Account</p>
+          </a> -->
+
+          <!-- Logged In -->
+         
+        </nav>
+      </div>
+
+
+    <main class="update-account layout">
+        <div class="container" style="justify-content: center;align-items: center;display: flex;">
+          
+
+              <div class="layout__body" >
+                    <form class="form" action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                       
+                        {% for field in form %}
+
+
+                        <div class="form__group">
+                            <label for="profile_pic" style="color: black;font-size: 3rem;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-weight: 100;">Hey {{request.user.first_name}} Are you sure this connection!</label>
+                            {{field}}
+                        </div>
+
+            {% endfor %}
+            
+
+                       
+                        <div class="form__action" style="flex-direction: row;flex-wrap: wrap;">
+                            <button class="btn btn--main" type="submit" onclick="JS_INput()" style="background-color: dodgerblue;color: white;margin-left: 20px;">Yes Connect</button>
+                            <a class="btn btn--dark"  href="{{request.META.HTTP_REFERER}}" style="background-color: white;color: #000;margin-right: 20px;">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+
+
+        </div>
+      </div>
+    </main>
+
+
+    <script>
+
+         inputs = document.getElementsByTagName('input')
+           inputs[1].style.visibility="hidden"
+           inputs[1].style.height="0px"
+
+    function JS_INput(){
+        inputs = document.getElementsByTagName('input')
+        inputs[1].style.color="red"
+          inputs[1].style.border = "solid 1px blue"
+           inputs[1].style.visibility="hidden"
+        inputs[1].style.enable=false
+   
+        f = 0
+        
+    
+
+        const followers = inputs[1].value;
+        f = followers
+        inputs[1].value = f - 1 + 2;
+       
+         
+       
+    }
+
+
+</script>

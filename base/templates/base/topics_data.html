@@ -1,0 +1,94 @@
+
+      <div class="container"  >
+       
+     
+        <nav class="header__menu">
+          <!-- Not Logged In -->
+          <!-- <a href="/login.html">
+            <img src="./assets/avatar.svg" />
+            <p>Account</p>
+          </a> -->
+
+          <!-- Logged In -->
+        
+        </nav>
+      </div>
+
+    <main class="create-room layout" >
+      <div class="container">
+        <div >
+        <div class="layout__box_mobile_user" style="background-color: rgb(255, 255, 255);overflow-y: auto;" >
+          
+
+
+               {% if request.user.is_authenticated %}
+   <h2 style="background-color: rgb(255, 255, 255);color: #000;border-radius: 0.59rem;justify-content: center;align-items: center;display: flex;margin-right: 50%;margin-bottom: 0px;font-weight: bold;margin-left: 1rem;">People to connect</h2>
+
+   
+        
+
+          {% else %}
+
+          
+   <h2 style="background-color: rgb(255, 255, 255);color: #000;border-radius: 0.59rem;justify-content: center;align-items: center;display: flex;margin-right: 50%;margin-bottom: 0px;font-weight: bold;">People to connect</h2> 
+   
+          {% endif %}
+
+            <p style="background-color: rgb(255, 255, 255);color: dodgerblue;border-radius: 0.59rem;margin-top: 0.99rem;margin-left: 2rem;width: 100%;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"><span><i class="users icon" style="font-size: 25px;color:dodgerblue;"></i></span> Find people you know</p>
+
+
+          
+
+
+            
+                <form action="" method="POST">
+          {% csrf_token %}
+            {% for public_Users in public_User %}
+    
+
+            <div style="margin-left: 2rem;padding: 1rem;margin-bottom: 0.20rem;margin-bottom: 0.10rem;"  class="roomListRoom__author">
+          
+             <a href="{% url 'user-profile' public_Users.id %}" style="">
+                  <div class="avatar avatar--smallFollow">
+                  <img src="{{public_Users.avator.url}}" />
+                </div>
+                
+             </a>
+              <div style="width: 100%;flex-direction: column;">
+                  <span style="font-size: small;margin-top: 0px;padding-top: 0px;color: #000;font-family: Arial, Helvetica, sans-serif;font-weight: 100;">{{public_Users.name}} <span style="color: rgb(158, 158, 158);">@{{public_Users.bio}}</span></span> 
+                  <br>
+
+       
+
+        <input name="userE" type="hidden" value="yesyes"  />
+
+                <button style="border-radius: 2rem;width: 50%;height: 3rem;border: solid 1px dodgerblue;background-color: rgb(255, 255, 255);color:dodgerblue;font-weight: bold;margin-top: 0.50rem;" type="submit" ><a href="{% url 'following' %}" class="follow">Connect</a></button>
+             
+
+
+
+              
+              </div>
+            </div>
+            
+               <hr style="border: solid 1px rgb(250, 247, 247);margin-left: 3rem;margin-right: 3rem;">
+
+
+{% endfor %}
+ </form>
+
+
+ 
+   <p style="background-color: rgb(255, 255, 255);color: dodgerblue;border-radius: 0.59rem;margin-top: 0.99rem;margin-left: 2rem;width: 100%;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;margin-bottom: 2rem;"><span><i class="search icon" style="font-size: 25px;color:dodgerblue;"></i></span> Search specific user</p>
+        
+   
+
+
+
+          
+        </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>

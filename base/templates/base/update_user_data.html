@@ -1,0 +1,73 @@
+
+      <div class="container">
+       
+      
+        <nav class="header__menu">
+          <!-- Not Logged In -->
+          <!-- <a href="/login.html">
+            <img src="./assets/avatar.svg" />
+            <p>Account</p>
+          </a> -->
+
+          <!-- Logged In -->
+         
+        </nav>
+      </div>
+
+
+    <main class="update-account layout">
+        <div class="container" >
+            <div class="layout__box" style="background-color:white;margin-top: 37rem;padding-top: 0px;overflow-y: auto;box-shadow: 0px 0px 0px white;" >
+                <div class="layout__boxHeader" style="background-color: rgb(255, 255, 255);">
+                    <div class="layout__boxTitle" >
+                       
+                        <h3 style="color: black;">Edit your profile</h3>
+                    </div>
+                </div>
+                <div class="layout__body">
+                    <form class="form" action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                       
+                        {% for field in form %}
+
+
+                        <div class="form__group">
+                            <label for="profile_pic" style="color: black;">{{field.label}}</label>
+                            {{field}}
+                        </div>
+
+            {% endfor %}
+            
+
+                       
+                        <div class="form__action">
+                            <a class="btn btn--dark" href="{{request.META.HTTP_REFERER}}" style="background-color: white;color: #000;box-shadow: 0px 0px 0px white;">Cancel</a>
+                            <button class="btn btn--main" type="submit" style="background-color: dodgerblue;color: #fff;width: 30%;align-items: center;display: flex;justify-content: center;box-shadow: 0px 0px 0px white;">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+    </main>
+
+
+    <script>
+
+
+    function JS_INput(){
+        inputs = document.getElementsByTagName('input')
+        bio = document.getElementsByTagName('textarea')
+        bio[0].style.color="black"
+        
+    
+        inputs[2].style.color="black"
+        inputs[3].style.color="black"
+        inputs[4].style.color="black"
+        inputs[5].style.color="black"
+       
+       
+    }
+
+    JS_INput()
+</script>

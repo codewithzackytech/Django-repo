@@ -1,0 +1,434 @@
+<!--
+  created by. Zacky on 25, may 2022
+  lastUpdate: 
+-->
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+  <link rel="icon" href="%PUBLIC_URL%/../../../../static/SystemImage/drypoxNewWhite2.png" />
+ 
+  <meta
+      name="InkPub"
+      content="InkPub"
+    />
+
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/../images/dev.jpg" />
+  <meta charset="UTF-7">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% if request.user.is_authenticated %}
+
+  <title>InkPub Login:{{request.user}}</title>
+
+  {% else %}
+    <title>InkPub</title>
+{% endif %}
+  <!-- Assets Files -->
+
+  {% include 'base/style.html' %}
+   {% include 'base/style2.html' %}
+</head>
+
+<body style="background-color: rgb(246, 248, 250);;">
+ <!-- Menu Bar -->
+ 
+
+<!-- rgb(70, 48, 235)-->
+ 
+ <div class="ui large fixed menu" style="background-color:none">
+  
+  <div class="right menu" style="align-items: center;width: 100%;">
+    
+    
+    <div style="margin-left: 1rem;flex-direction: row;align-items: center;display: flex;justify-content: center;">
+      <span style="margin-left: 20px;">  <i class="home icon" style="font-size: 23px;color:dodgerblue"></i></span><a  href="{% url 'home' %}"  style="color:dodgerblue;margin-left: 0px;font-size: 120%;font-weight: bold;padding-top: 1.10%;">Home</a>
+      
+      <span style="margin-left: 20px;;">  <i class="settings icon" style="font-size: 20px;color:rgb(99, 98, 98);"></i></span><a  href="{% url 'user-profile' request.user.id %}" style="color: rgb(99, 99, 99);font-size: 120%;font-weight: 700;padding-top: 1.10%;">Acount</a>
+      
+      
+      <span style="margin-left: 20px;;">  <i class="user icon" style="font-size: 20px;color:rgb(99, 99, 99);"></i></span><a  href="{% url 'create-room' %}" style="color: rgb(99, 99, 99);font-size: 120%;font-weight: 700;padding-top: 1.20%;">Post</a>
+
+
+
+          <span style="margin-left: 20px;;">  <i class="user icon" style="font-size: 20px;color:rgb(99, 99, 99);"></i></span><a  href="{% url 'doFeedback' %}" style="color: rgb(99, 99, 99);font-size: 120%;font-weight: 700;padding-top: 1.20%;">Feedback</a>
+
+
+      
+       
+      
+    </div>
+    
+    
+    <a href="{% url 'home' %}"  style="margin-left: 55%;">
+          <div >
+            <img src="{% static  'SystemImage/drypoxNewWhite2.png' %}" style="width: 100px;height: 30px;border-top-right-radius: 00px;border-bottom-right-radius: 0px;" />
+          </div>
+ 
+        </a>
+    
+
+
+  </div>
+
+
+  <div class="ui container" >
+    
+  
+
+
+    </div>
+    
+    
+    
+
+    
+    
+    
+    <div style="flex-direction: row;justify-content: space-between;align-items: center;display: flex;margin-right: 50px;">
+      
+   
+   
+     
+     
+          
+    
+
+      </div>
+
+      
+      
+  {% if request.user.is_authenticated %}
+               <div class="item" >
+          <a class="ui primary button" style="background-color: dodgerblue;border-radius:   0px;border-radius: 2rem;height: 3.30rem;align-items: center;display: flex;width: 10rem;justify-content: center;font-weight: bold;" href="{% url 'logout' %}">LogOut</a>
+         </div>
+  
+  {% else %}
+    <div class="item"  style="justify-content: center;align-items: center;display: flex;flex-direction: row;">
+          <span></span><a class="ui primary button"  style="background-color: rgb(255, 255, 255);border-radius:   0px;color: #000;" href="{% url 'login' %}">Sign in</a>
+         </div>
+  
+             <div class="item" >
+          <a class="ui primary button" style="background-color: dodgerblue;border-radius:   0px;border-radius: 2rem;height: 3.30rem;align-items: center;display: flex;width: 10rem;justify-content: center;font-weight: bold;" href="{% url 'register' %}">Sign Up</a>
+         </div>
+  {% endif %}
+
+      {% if request.user.is_authenticated %}
+
+       <a href="{% url 'user-profile' request.user.id %}" style="font-weight: bold;color: rgb(139, 136, 136);">
+      <div style="flex-direction: row;align-items: center;display: flex;padding-right: 2%;padding-left: 1%;">
+              
+      
+
+
+           <a href="{% url 'user-profile' request.user.id %}">
+              <div class="avatar avatar--medium active">
+                <img src="{{request.user.avator.url}}" />
+              </div>
+     
+            </a>
+
+
+        <div>
+        
+           
+          </div>
+        </div>
+        </a>
+        {% endif %} 
+      </div>
+
+  
+
+  <!-- Navigation Panel -->
+ <div class="ui vertical inverted sidebar menu" style="background-color:rgb(0, 0, 0); width: 80vmin;">
+
+
+    <div style="margin-top: 30px;padding-left: 10px;">
+      
+
+  
+      {% if request.user.is_authenticated %}
+
+
+      <div style="justify-content: center;align-items: center;display: flex;">
+      </div>
+      
+      <div style="justify-content: center;align-items: center;display: flex;">
+        
+        <a href="{% url 'user-profile' request.user.id %}" style="font-weight: bold;color: #8b8888;"></a>
+        <div style="flex-direction: column;align-items: center;display: flex;margin-right: 30px;">
+          
+          
+   <div class="profile__avatar">
+     <a href="{% url 'user-profile' request.user.id %}">
+       
+       <div class="avatar avatar--large active">
+         <img src="{{user.avator.url}}" />
+       </div>
+     </a>
+          </div>
+            
+        <div style="justify-content: center;align-items: center;display: flex;flex-direction: column;">
+           <h3 style="font-family: Arial, Helvetica, sans-serif;padding-top: 10px;color: rgb(255, 255, 255);">{{request.user.first_name}} {{request.user.last_name}}</h3>
+
+          <p style="font-family: Arial, Helvetica, sans-serif;padding-top: 0px;color: rgb(255, 255, 255);">@{{request.user.username}}</p>
+            <p style="font-family: sans-serif;padding-top: 0px;color: rgb(199, 195, 195);">LIFE BIO</p>
+              <p style="font-family: sans-serif;padding-top: 0px;color: rgb(219, 218, 218)">{{request.user.bio}}</p>
+
+          
+          </div>
+
+          
+
+          <div style="justify-content: center;align-items: center;display: flex;margin-top: 10px;">
+                
+              {% if request.user == user %}
+             <a href="{% url 'user-profile' request.user.id %}" class="btn btn--main btn--pill" style="background-color: dodgerblue;color: #FFF;border: solid 1px dodgerblue;">Manage Acount</a>
+           {% endif %}
+           
+          </div>
+          
+        </div>
+        </a>
+
+       </div>
+        {% endif %}
+          
+
+ 
+        <div style="margin-top: 30px;">
+
+     
+
+
+
+
+   {% if request.user.is_authenticated %}
+                  <div style="flex-direction: row;justify-content: flex-start;align-items: center;display: flex;margin-top: 30px;">
+                      <a href="{% url 'logout' %}" class="dropdown-link"
+              ><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
+                <title>sign-out</title>
+                <path
+                  d="M3 0h22c0.553 0 1 0 1 0.553l-0 3.447h-2v-2h-20v28h20v-2h2l0 3.447c0 0.553-0.447 0.553-1 0.553h-22c-0.553 0-1-0.447-1-1v-30c0-0.553 0.447-1 1-1z"
+                ></path>
+                <path
+                  d="M21.879 21.293l1.414 1.414 6.707-6.707-6.707-6.707-1.414 1.414 4.293 4.293h-14.172v2h14.172l-4.293 4.293z"
+                ></path>
+              </svg>
+              </a>
+                <a href="{% url 'logout' %}"><p style="color: rgb(248, 0, 0);font-size: 18px;font-weight: bold;">Logout</p></a>
+                  </div>
+   {% else%}
+
+     
+      <div style="flex-direction: row;justify-content: flex-start;align-items: center;display: flex;">
+                   <i class="user icon" style="font-size: 25px;color:rgb(255, 255, 255);"></i>
+  
+  
+                <a href="{% url 'register' %}"><p style="color: rgb(255, 255, 255);font-size: 18px;font-weight: bold;margin-top: 11px;">Sign Up</p></a>
+                  </div>
+
+
+                  
+      <div style="flex-direction: row;justify-content: flex-start;align-items: center;display: flex;">
+                   <i class="user icon" style="font-size: 25px;color:rgb(255, 255, 255);"></i>
+  
+  
+                <a href="{% url 'login' %}"><p style="color: rgb(255, 255, 255);font-size: 18px;font-weight: bold;margin-top: 11px;">Log in</p></a>
+                  </div>
+
+   {% endif %}
+
+
+        </div>
+ 
+
+    <div style="margin-top: 140px;">
+       
+
+       <!-- <img src="{% static 'images/user2.png' %}"  class="ui small image"/>
+
+-->
+
+     </div>
+
+
+
+  
+    </div>
+  </div>
+
+
+
+
+  
+  <!-- Desktop Mode -->
+  <div class="pusher"  >
+    
+
+
+   <div>
+   
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+     <div   style="background-color: rgb(255, 255, 255);border-radius: 0px;margin-top: 0px;" class="ui large top  menu">
+        <div class="ui large secondary inverted pointing menu" style="border-radius: 0px;justify-content: space-between;align-items: center;display: flex;border: solid 0px rgb(255, 255, 255);flex-direction: row;">
+         
+
+
+
+          <div>
+            <a href="{% url 'home' %}"  style="margin-left: 3%;">
+          <div >
+            <img src="{% static  'SystemImage/drypoxNewWhite2.png' %}" style="width: 100px;height: 30px;border-top-right-radius: 00px;border-bottom-right-radius: 0px;" />
+          </div>
+ 
+        </a>
+    
+    
+          </div>
+    
+    
+    
+          <div style="margin-left: 105%">
+          
+          <a class="toc item">
+            <i class="sidebar icon" style="font-size: 25px;color:dodgerblue;"></i>
+          </a>
+       
+      </div>
+      <div style="margin-top: 0px;" class="toc item">
+        
+         
+    <div >
+       
+<!--
+        <img src="{% static 'images/mobileIcon.png' %}"  class="ui small image"/>
+
+-->
+
+     </div>
+
+
+
+
+     
+      </div>
+
+
+
+      
+
+        
+
+          
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+    
+
+
+
+
+
+
+
+
+  
+
+
+    <div>
+
+        
+        {% include 'base/feedbackData.html' %}
+        <!-- cut here -->
+          
+
+        
+        
+    </div>
+
+  </div>
+
+
+
+</body>
+
+<script>
+  function CommingSoon (){
+    alert('This Functionality is Under development')
+  }function CommingSoon2 (){
+    alert('Wanka xumahay Hada Maheli kartid Fadlan Iska Sug Malmo')
+  }
+</script>
+   <script src="script.js"></script>
+</html>

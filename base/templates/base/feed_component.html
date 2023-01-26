@@ -1,0 +1,30 @@
+
+
+  {% for datas in data %}
+
+      <div class="ui text container" style="background-color: white;padding: 30px;margin: 10px;">
+
+
+        <div >
+       
+
+          <div style="display: flex;align-items: flex-start;flex-direction: row;">
+
+                <img src="" class="ui small image" style="width: 40px;height: 40px;border-radius: 50px;border: solid 2px rgb(9, 240, 9);"><small style="font-family: Arial, Helvetica, sans-serif;margin-left: 10px;"> <a href="{% url 'user-profile' datas.host.id %}" style="font-weight: bold;color: #000;">@{{datas.host.username}} {{datas.host.lastName}}</a><span style="padding-left: 10px;">{{datas.created|timesince}}</span></small>
+                <br>
+              
+
+                
+
+          </div>
+          
+
+              
+          <h4 class="ui header" style="color: rgb(46, 45, 45);"><a href="{% url 'room' datas.id %}">{{datas.name}}</a> </h4>
+     
+        </div>
+       <div style="justify-content: flex-end;align-items: flex-end;display: flex;">
+          <a class="ui small button" href="https://github.com/codewithzackytech" style="background-color: rgb(251, 255, 255);border-radius: 30px;">Topic: {{datas.topic.name}}</a>
+       </div>
+      </div>
+   {% endfor %}

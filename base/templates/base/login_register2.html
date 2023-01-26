@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body style="background: rgb(4, 10, 37);">
+    
+
+  {% if page == 'login' %}
+
+   
+    
+    <div style="justify-content: center;align-items: center;display: flex;">
+            <h1 class="ui inverted header" style="font-family: serif;">
+        <span style="color: orange;">N</span><span style="color: white;">efex</span><span style="font-size: 50px;color: white;">)</span>
+        </h1>
+      
+        </div>
+
+
+  <div style="justify-content: center;align-items: center;display: flex;">
+    <p style="color: white;">To continue, log in to Nefux</p>
+
+</div>
+
+    <form method="post" action="">
+        {% csrf_token %}
+
+         <div style="justify-content: center;align-items: center;display: flex;padding-right: 140px;">
+    <p style="color: white;">Email address or username</p>
+
+</div>
+  
+
+
+ 
+        <div style="justify-content: center;align-items: center;display: flex;">
+                  <input type="text" placeholder="Email address or username" name="username" style="
+                    width: 300px;height: 50px;border-radius: 5px;padding-left: 20px;"/>
+             
+        
+        </div>
+
+
+
+        <div style="justify-content: center;align-items: center;display: flex;padding-right: 240px;">
+    <p style="color: white;">Password</p>
+
+</div>
+         
+        <div style="justify-content: center;align-items: center;display: flex;">      
+                <input type="password" placeholder="password" name="password" style="
+                    width: 300px;height: 50px;padding-left: 20px;border-radius: 5px;"/>
+        
+        </div>
+
+
+
+        
+        <div style="justify-content: center;align-items: center;display: flex;;">
+            <br><br>
+            <br><br>
+                <button type="submit" style="width: 300px;height: 60px;
+                background: orange;border-radius: 5px;color: white;font-size: 20px;box-shadow: 0px 0px 10px black">Submite</button>
+        </div>
+    </form>
+{% else %}
+
+
+    
+    <form method="post" action="">
+        {% csrf_token %}
+
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body style="background: rgb(4, 10, 37);">
+    
+    
+    <div style="justify-content: center;align-items: center;display: flex;">
+            <h1 class="ui inverted header" style="font-family: serif;">
+        <span style="color: orange;">N</span><span style="color: white;">efex</span><span style="font-size: 50px;color: white;">)</span>
+        </h1>
+      
+        </div>
+
+
+  <div style="justify-content: center;align-items: center;display: flex;">
+    <p style="color: white;font-size: 20px;font-family: cursive;">Welcome to Registration</p>
+
+</div>
+
+    <form method="post" action="">
+        {% csrf_token %}
+
+         <div style="justify-content: center;align-items: center;display: flex;padding-right: 140px;">
+    <p style="color: white;font-size: 30px;font-family: serif;">SignUp for free to start Advertisement</p>
+
+</div>
+  
+
+
+ 
+       
+
+
+
+
+          
+
+<div style="justify-content: center;align-items: center;display: flex;">
+
+                       <div class="ui middle aligned stackable grid container">
+            <div class="row" id="first  Post">
+              <div class="eight wide column" >
+                
+                   {{form.username}}
+                     {{form.first_name}}
+                       {{form.last_name}}
+     
+              </div>
+
+                  <div class="eight wide column" >
+              
+                      {{form.email}}
+                     {{form.password1}}
+                       {{form.password2}}
+    
+              </div>
+
+
+
+
+                <div class="eight wide column" >
+              
+                      <div style="justify-content: center;align-items: center;display: flex;">
+                          <p style="color: white;padding-right: 20px;font-family: Verdana, Geneva, Tahoma, sans-serif;">Check It To Contiunue</p>
+                          {{form.is_staff}}
+                 
+                      </div>
+    
+              </div>
+              <div class="six wide right floated column" id="firstPost">
+              </div>
+            </div>
+          </div>
+
+
+
+          
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <div style="justify-content: center;align-items: center;display: flex;;">
+            <br><br>
+            <br><br>
+                <button type="submit" style="width: 500px;height: 60px;
+                background: orange;border-radius: 5px;color: white;font-size: 30px;box-shadow: 0px 0px 10px black">SignUp</button>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+    </form>
+{% endif %}
+</body>
+<script>
+     componentDidMount = () => {
+           var input_fields = document.getElementsByTagName('input');
+    
+            input_fields[3].placeholder="First Name";
+            input_fields[4].placeholder="Last Name";
+            input_fields[2].placeholder="Public Username / Nick Name";
+            input_fields[5].placeholder="Email Address";
+            input_fields[6].placeholder="New Password";
+            input_fields[7].placeholder="Comfirm Password";
+
+
+            input_fields[2].style.width='300px'
+            input_fields[2].style.height='50px'
+            input_fields[2].style.paddingLeft='20px'
+            input_fields[2].style.borderRadius = '10px'
+            input_fields[2].style.border="solid 5px black"
+
+
+                      input_fields[3].style.width='300px'
+            input_fields[3].style.height='50px'
+            input_fields[3].style.paddingLeft='20px'
+            input_fields[3].style.borderRadius = '10px'
+            input_fields[3].style.border="solid 5px black"
+            
+           
+        
+
+
+                    input_fields[4].style.width='300px'
+            input_fields[4].style.height='50px'
+            input_fields[4].style.paddingLeft='20px'
+            input_fields[4].style.borderRadius = '10px'
+            input_fields[4].style.border="solid 5px black"
+       
+
+
+
+
+                    input_fields[5].style.width='300px'
+            input_fields[5].style.height='50px'
+            input_fields[5].style.paddingLeft='20px'
+            input_fields[5].style.borderRadius = '10px'
+            input_fields[5].style.border="solid 5px black"
+        
+        
+        
+
+                    input_fields[6].style.width='300px'
+            input_fields[6].style.height='50px'
+            input_fields[6].style.paddingLeft='20px'
+            input_fields[6].style.borderRadius = '10px'
+            input_fields[6].style.border="solid 5px black"
+        
+        
+        
+
+                    input_fields[7].style.width='300px'
+            input_fields[7].style.height='50px'
+            input_fields[7].style.paddingLeft='20px'
+            input_fields[7].style.borderRadius = '10px'
+            input_fields[7].style.border="solid 5px black"
+
+
+         
+        }
+        componentDidMount()
+</script>
+</html>
